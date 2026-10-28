@@ -205,8 +205,13 @@ h2 { margin: 0; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.2; letter-sp
 .project-number { color: var(--muted-2); font-family: monospace; font-size: 11px; padding-top: 7px; }
 .project-icon { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid var(--line); border-radius: 12px; background: var(--blue-soft); color: var(--blue-bright); }
 .project-meta { color: var(--muted-2); font-size: 10px; margin-bottom: 5px; }
+.project-card-featured { border-color: var(--blue); }
+.project-badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 9px; }
+.project-status, .project-featured { padding: 3px 8px; border-radius: 5px; font-size: 9px; font-weight: 700; }
+.project-status { color: var(--muted); background: var(--bg-soft); }
+.project-featured { color: var(--blue-bright); background: var(--blue-soft); }
+.project-screenshot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; margin-bottom: 15px; border: 1px solid var(--line); border-radius: 9px; }
 .project-content h3 { font-size: 15px; margin: 0 0 6px; }
-.project-repository { margin: -2px 0 8px; color: var(--muted-2); font-size: 10px; overflow-wrap: anywhere; }
 .project-content > p { color: var(--muted); font-size: 12px; line-height: 1.8; margin: 0 0 13px; }
 .tag-list { display: flex; flex-wrap: wrap; gap: 7px; }
 .tag { background: var(--blue-soft); color: var(--blue-bright); border-radius: 5px; padding: 4px 8px; font-family: monospace; font-size: 9px; }

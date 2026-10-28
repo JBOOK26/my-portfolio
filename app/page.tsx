@@ -3,9 +3,7 @@ import {
   ArrowDown,
   ArrowUpRight,
   Braces,
-  Boxes,
   Database,
-  Dumbbell,
   ExternalLink,
   GraduationCap,
   Laptop,
@@ -13,11 +11,11 @@ import {
   MessageCircle,
   Network,
   Phone,
-  Wallet,
   Wrench,
-  type LucideIcon,
 } from "lucide-react";
+import Image from "next/image";
 import ContributionsCalendar from "./contributions-calendar";
+import { projects } from "./projects";
 import SiteHeader from "./site-header";
 
 const profileLinks = {
@@ -82,69 +80,6 @@ const skills = [
     icon: Wrench,
     level: "Growing my toolkit",
     items: ["VS Code", "Git and GitHub", "XAMPP", "Windows troubleshooting"],
-  },
-];
-
-type Project = {
-  number: string;
-  title: string;
-  category: string;
-  icon: LucideIcon;
-  repositoryName: string | null;
-  description: string;
-  technologies: string[];
-  repositoryUrl: string | null;
-  liveDemoUrl: string | null;
-};
-
-const projects: Project[] = [
-  {
-    number: "01",
-    title: "StockPilot Inventory Management System",
-    category: "Web app · Inventory management",
-    icon: Database,
-    repositoryName: null,
-    description:
-      "A PHP inventory management system developed with XAMPP and MySQL/MariaDB. It supports inventory create, read, update, and delete workflows, stores activity logs and price history in related tables, and uses three database triggers.",
-    technologies: ["PHP", "XAMPP", "MySQL / MariaDB", "CRUD", "Database triggers"],
-    repositoryUrl: null,
-    liveDemoUrl: null,
-  },
-  {
-    number: "02",
-    title: "Inventory App",
-    category: "Team project · Inventory management",
-    icon: Boxes,
-    repositoryName: "Bucod-Dagoy-ADV101-final-project",
-    description:
-      "A Next.js and MySQL inventory app with product create, search, update, and delete workflows, plus authenticated sales records, sale details, revenue summaries, and stock updates.",
-    technologies: ["Next.js", "React", "MySQL", "mysql2", "JWT"],
-    repositoryUrl: "https://github.com/JBOOK26/Bucod-Dagoy-ADV101-final-project",
-    liveDemoUrl: null,
-  },
-  {
-    number: "03",
-    title: "BudgetBuddy",
-    category: "Mobile app · Budget tracking",
-    icon: Wallet,
-    repositoryName: "BudgetBuddy",
-    description:
-      "An Expo and React Native budgeting app with Firebase authentication and Firestore transactions. Its dashboard summarizes income, expenses, balance, and spending by category, with transaction entry and history.",
-    technologies: ["React Native", "Expo", "Firebase Auth", "Cloud Firestore", "React Native Chart Kit"],
-    repositoryUrl: "https://github.com/JBOOK26/BudgetBuddy",
-    liveDemoUrl: null,
-  },
-  {
-    number: "04",
-    title: "GymSphere",
-    category: "Front-end prototype · Fitness",
-    icon: Dumbbell,
-    repositoryName: "HCI",
-    description:
-      "A multi-section gym website prototype with membership-plan and class-booking flows, account screens, and contact and class-suggestion forms.",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    repositoryUrl: "https://github.com/JBOOK26/HCI",
-    liveDemoUrl: null,
   },
 ];
 
@@ -333,24 +268,37 @@ export default function Home() {
             </h2>
           </div>
           <p className="heading-aside">
-            A selection of projects built while developing practical skills in web development and databases.
+            A curated selection of projects in application development, databases, and front-end design.
           </p>
         </div>
 
         <div className="projects-list">
-          {projects.map((project) => (
-            <article className="project-card" key={project.number}>
-              <div className="project-number">{project.number}</div>
+          {projects.map((project, index) => (
+            <article
+              className={`project-card${project.featured ? " project-card-featured" : ""}`}
+              key={project.id}
+            >
+              <div className="project-number">{String(index + 1).padStart(2, "0")}</div>
               <div className="project-icon" aria-hidden="true">
                 <project.icon size={25} />
               </div>
 
               <div className="project-content">
+                {project.screenshotPath && (
+                  <Image
+                    className="project-screenshot"
+                    src={project.screenshotPath}
+                    alt={`${project.title} screenshot`}
+                    width={1200}
+                    height={675}
+                  />
+                )}
+                <div className="project-badges">
+                  <span className="project-status">{project.status}</span>
+                  {project.featured && <span className="project-featured">Featured</span>}
+                </div>
                 <div className="project-meta">{project.category}</div>
                 <h3>{project.title}</h3>
-                {project.repositoryName && (
-                  <p className="project-repository">GitHub repository: {project.repositoryName}</p>
-                )}
                 <p>{project.description}</p>
                 <div className="tag-list">
                   {project.technologies.map((technology) => (

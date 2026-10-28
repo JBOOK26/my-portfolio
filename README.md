@@ -26,13 +26,17 @@ To run the production build locally, use `npm run start` after `npm run build`.
 
 ## Updating portfolio content
 
-- Edit the `profileLinks` object, skills, and typed `projects` data near the top of `app/page.tsx`.
+- Edit the `projects` array in `app/projects.ts` to add or update curated project cards. Include a verified public repository URL, concise evidence-based description, technologies confirmed by the repository, a status, and a featured flag. Use `screenshotPath` for an image stored under `public/`; set unavailable screenshots and demo URLs to `null`.
 - Add only real public contact details and profile URLs. The email action and social links remain hidden until their URLs are provided.
-- Set a project's `repositoryName`, `repositoryUrl`, or `liveDemoUrl` only after verifying the destination. Project links open in a new tab; unset links are not rendered as buttons.
+- Project links open in a new tab; demo buttons are shown only when a real demo URL is set.
 - Replace or supplement `app/icon.svg` with a personal icon if desired. Add screenshots to `public/` only when they are available and properly licensed.
 - Add a resume only when a real, current document is ready to publish.
 
-StockPilot is described as a PHP inventory management system developed with XAMPP and MySQL/MariaDB. Its current portfolio description covers inventory CRUD workflows, related tables for activity logs and price history, and three database triggers.
+### Manual GitHub project review
+
+GitHub project reviews are performed only when requested; this portfolio does not monitor repositories continuously or update itself automatically. During a requested review, inspect only repositories that are accessible, compare verified repository contents with `app/projects.ts`, and recommend additions, updates, featured changes, or removals. Update the curated data only when repository details and links can be verified. Public search results do not imply access to private repositories or every repository on an account.
+
+StockPilot is described as a PHP inventory management system developed with XAMPP and MySQL/MariaDB, including inventory workflows, activity logs, price history, and database triggers. It is not currently listed because no matching public repository was found during this review; add it to the portfolio only after its repository and details can be verified.
 
 ## Publishing
 
