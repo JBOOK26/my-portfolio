@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IT Student Portfolio
 
-## Getting Started
+A responsive, single-page portfolio built with Next.js App Router, React, TypeScript, CSS, and lucide-react.
 
-First, run the development server:
+## Requirements
+
+- Node.js 20.9 or later
+- npm
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). To check the project before publishing:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To run the production build locally, use `npm run start` after `npm run build`.
 
-## Learn More
+## Updating portfolio content
 
-To learn more about Next.js, take a look at the following resources:
+- Edit the `profileLinks` object, skills, and typed `projects` data near the top of `app/page.tsx`.
+- Add only real public contact details and profile URLs. The email action and social links remain hidden until their URLs are provided.
+- Set a project's `repositoryName`, `repositoryUrl`, or `liveDemoUrl` only after verifying the destination. Project links open in a new tab; unset links are not rendered as buttons.
+- Replace or supplement `app/icon.svg` with a personal icon if desired. Add screenshots to `public/` only when they are available and properly licensed.
+- Add a resume only when a real, current document is ready to publish.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+StockPilot is described as a PHP inventory management system developed with XAMPP and MySQL/MariaDB. Its current portfolio description covers inventory CRUD workflows, related tables for activity logs and price history, and three database triggers.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Publishing
 
-## Deploy on Vercel
+Vercel is a straightforward option for this Next.js app:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push the repository to a Git provider.
+2. Import the repository in Vercel and keep the detected Next.js framework settings.
+3. Use `npm run build` as the build command; no environment variables are currently required.
+4. Deploy, then add a custom domain in the hosting dashboard if you have one.
+5. Before sharing the URL, add real contact and project links and review the published page on mobile and desktop.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Other Node.js hosts can run the same production build with `npm run build` and `npm run start`.
